@@ -1,3 +1,14 @@
+let scrollBtn = document.querySelector("#rules");
+
+scrollBtn.addEventListener("click",()=>{
+    let para = document.querySelector("p");
+    para.scrollIntoView();
+});
+
+
+
+//Rock Paper Scissors Game Logic
+
 //Dictionaries allowed for less comparisons than lots of if statements when determining winner
 //Correspond number for each move
 let numberMove = {
@@ -15,7 +26,6 @@ let losingMove = {
 };
 
 
-playGame();
 
 
 function getKey(dict, value){
@@ -28,8 +38,8 @@ function getKey(dict, value){
 
 
 function playRound(){
-    let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
-
+    // let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
+// replace this with button event handler and change outputs
 
     while(playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors"){
         playerSelection = prompt("Not valid please type rock, paper or scissors.").toLowerCase();
