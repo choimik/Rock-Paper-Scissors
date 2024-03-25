@@ -1,10 +1,16 @@
-let scrollBtn = document.querySelector("#rules");
+//add event delegation later with ul
+let scrollBtn = document.querySelector("#ruleBtn");
 
 scrollBtn.addEventListener("click",()=>{
-    let para = document.querySelector("p");
-    para.scrollIntoView();
+    let rules = document.querySelector("h4");
+    rules.scrollIntoView();
 });
 
+let playBtn = document.querySelector("#playBtn");
+
+playBtn.addEventListener("click", () =>{
+    window.location.href='play.html';
+});
 
 
 //Rock Paper Scissors Game Logic

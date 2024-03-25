@@ -4,10 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play Rock Paper Scissors</title>
-    <link rel="stylesheet" href="style.css" >
+    <link rel="stylesheet" href="play.css" >
     <script src="script.js" defer></script>
 </head>
 <body>
-    
+    <nav>
+        <h1>Rock Paper Scissors</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="play.html">Let's Play</a></li>
+        </ul>
+    </nav>
+
+    <h1 id="directions">Rock Paper Scissors</h1>
+
+    <div class="rps">
+        <div class="player">
+            <h1>Player Choice</h1>
+            <div class="playerChoice">
+                <div class="scissors">
+                    <img src="pictures/scissors.svg" width="10%" height="10%">
+                    <p>Scissors</p>
+                </div>
+                <div class="paper">
+                    <img src="pictures/paper.svg" width="10%" height="10%">
+                    <p>Paper</p>
+                </div>
+                <div class="rock">
+                    <img src="pictures/rock.svg" width="10%" height="10%">
+                    <p>Rock</p>
+                </div>
+            </div>
+        </div>
+        <div class="computer">
+            <h1>Computer Choice</h1>
+            <div class="computerChoice">
+                <div>
+                    <img src="pictures/rock.svg" width="10%" height="10%">
+                    <p>Unknown Move</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scoreboard">
+        <h1>Score</h1>
+
+        <div class="scores">
+            <div class="playerScore">
+                <h1>Player</h1>
+                <h1>0</h1>
+            </div>
+
+            <div class="playerScore">
+                <h1>Computer</h1>
+                <h1>0</h1>
+            </div>
+        </div>
+
+        <button id="reset">Reset</button>
+    </div>
+
+    <div class="pastGames">
+        <ul>
+
+        </ul>
+    </div>
+
+    <div class="footer">
+        <h8>Rock Paper Scissors 2024</h8>
+    </div>
 </body>
 </html>
