@@ -18,53 +18,6 @@ if(playBtn !== null){
 }
 // code for play.html
 
-let total = 0;
-let win = 0;
-let tie = 0;
-let lose = 0;
-
-let playerChoice = document.querySelector(".playerChoice");
-
-let playerSelection;
-let isRunning = false;
-
-if(playerChoice !== null){
-    playerChoice.addEventListener("click", (e)=>{
-        if(isRunning){
-            return;
-        }
-        isRunning = true;
-        if(e.target.classList.contains("rock")){
-            playerChoice.querySelector(".rock img").src = "pictures/darkrock.svg";
-            playerSelection = 1;
-            total++;
-            playRound();
-            playerChoice.querySelector(".rock img").src = "pictures/rock.svg", 0;
-            
-        }
-        else if(e.target.classList.contains("paper")){
-            playerChoice.querySelector(".paper img").src = "pictures/darkpaper.svg";
-            playerSelection = 2;
-            total++;
-            playRound();
-            playerChoice.querySelector(".paper img").src = "pictures/paper.svg", 0;
-        }
-        else if(e.target.classList.contains("scissors")){
-            playerChoice.querySelector(".scissors img").src = "pictures/darkscissors.svg";
-            playerSelection = 3;
-            total++;
-            playRound();
-            playerChoice.querySelector(".scissors img").src = "pictures/scissors.svg", 0;
-        }
-        isRunning = false;
-    });
-}
-
-
-//Rock Paper Scissors Game Logic
-
-//Dictionaries allowed for less comparisons than lots of if statements when determining winner
-//Correspond number for each move
 let numberMove = {
     rock: 1,
     paper: 2,
@@ -79,6 +32,90 @@ let losingMove = {
     3: 1
 };
 
+
+let total = 0;
+let win = 0;
+let tie = 0;
+let lose = 0;
+
+let playerChoice = document.querySelector(".playerChoice");
+
+let playerSelection;
+let isRunning = false;
+let flag = false
+
+let resultText;
+
+if(playerChoice !== null){
+        playerChoice.addEventListener("click", (e)=>{
+            let src;
+
+            if(e.target.classList.contains("rock") && isRunning === false){
+                isRunning = true;
+                playerSelection = 1;
+                src = getKey(numberMove, playerSelection);
+                playerChoice.querySelector(`.${src} img`).src = `pictures/dark${src}.svg`;
+                total++;
+                playRound()
+            }
+            else if(e.target.classList.contains("paper") && isRunning === false){
+                isRunning = true;
+                playerSelection = 2;
+                src = getKey(numberMove, playerSelection);
+                playerChoice.querySelector(`.${src} img`).src = `pictures/dark${src}.svg`;
+                total++;
+                playRound()
+                }
+                else if(e.target.classList.contains("scissors") && isRunning === false){
+                    isRunning = true;
+                    playerSelection = 3;
+                    src = getKey(numberMove, playerSelection);
+                    playerChoice.querySelector(`.${src} img`).src = `pictures/dark${src}.svg`;
+                    total++;
+                    playRound()
+                }
+
+            });
+    
+}
+
+let reset = document.querySelector("#reset");
+
+if(reset !== null){
+    reset.addEventListener("click", ()=>{
+        if(isRunning === false){
+            let playerScore = document.querySelector(".playerScore h2");
+            let computerScore = document.querySelector(".computerScore h2");
+            let gameResult = document.querySelector(".gameResult h4");
+            let computerImg = document.querySelector("#computerImg");
+            win = 0;
+            lose = 0;
+            playerScore.textContent = 0;
+            computerScore.textContent = 0;
+            gameResult.textContent = "Who Will Win?";
+            computerImg.src = "pictures/unknown.svg";
+        }
+    });
+}
+
+
+function updateScore(text){
+    let gameResult = document.querySelector(".gameResult h4")
+    gameResult.textContent = text;
+
+    let playerScore = document.querySelector(".playerScore h2")
+    let computerScore = document.querySelector(".computerScore h2")
+
+    playerScore.textContent = win;
+    computerScore.textContent = lose;
+
+
+}
+
+//Rock Paper Scissors Game Logic
+
+//Dictionaries allowed for less comparisons than lots of if statements when determining winner
+//Correspond number for each move
 
 
 
@@ -122,7 +159,7 @@ function animateComputer(end){
 
     let j = 0;
     let options = [rock, paper, scissors];
-
+    
     for (let i = 0, stop = 8; i < stop; i++){
         for (choice of options){
             waitAnimate(choice, computerCaption, j);
@@ -133,6 +170,7 @@ function animateComputer(end){
         }
     }
 
+
 }
 
 function waitAnimate(choice, computerCaption, j){
@@ -140,8 +178,6 @@ function waitAnimate(choice, computerCaption, j){
     const image = document.querySelector("#computerImg");
     choiceName = choice.objectName;
     let src = choiceName.charAt(0).toLowerCase() + choiceName.slice(1);
-
-
     setTimeout(()=>{
         computerCaption.textContent = "";
         image.src = `pictures/${src}.svg`;
@@ -149,46 +185,57 @@ function waitAnimate(choice, computerCaption, j){
     }, 100+(50*j));
 
     j++;
-    
+
 }
 
 function playRound(){
 
 // replace this with button event handler and change outputs
+        let randomNumber = () => (Math.floor(Math.random()*3)+1);
+        let computerSelection = randomNumber();
 
-    let randomNumber = () => (Math.floor(Math.random()*3)+1);
-    let computerSelection = randomNumber();
+
+        // playerSelection = numberMove[playerSelection];
+
+        let playerText = getKey(numberMove, playerSelection);
+        let computerText = getKey(numberMove, computerSelection);
+        let computerTextCapitalized = computerText.charAt(0).toUpperCase() + computerText.slice(1);
+        let text;
+        let bool;
 
 
-    // playerSelection = numberMove[playerSelection];
+        if(computerSelection == playerSelection){
+            animateComputer(`${computerTextCapitalized}`);
+            tie++;
+            text = `Tie, Computer chose ${computerText} and you chose ${playerText}`;
+            bool = false;
+            setTimeout(()=>{
+                updateScore(text);
+                playerChoice.querySelector(`.${playerText} img`).src = `pictures/${playerText}.svg`;
+                isRunning = bool;
+            }, 2400);
+        }
+        else if(losingMove[playerSelection] == computerSelection){
+            animateComputer(`${computerTextCapitalized}`);
+            lose++;
+            text = `You Lose, Computer chose ${computerText} and you chose ${playerText}`;
+            bool = false;
+            setTimeout(()=>{
+                updateScore(text);
+                playerChoice.querySelector(`.${playerText} img`).src = `pictures/${playerText}.svg`;
+                isRunning = bool;
+            }, 2400);
+        }
+        else if(losingMove[playerSelection] !== computerSelection){
+            animateComputer(`${computerTextCapitalized}`);
+            win++;
+            text = `You Win, Computer chose ${computerText} and you chose ${playerText}`;
+            bool = false;
+            setTimeout(()=>{
+                updateScore(text);
+                playerChoice.querySelector(`.${playerText} img`).src = `pictures/${playerText}.svg`;
+                isRunning = bool;
+            }, 2400);
+        }
 
-    let playerText = getKey(numberMove, playerSelection);
-    let computerText = getKey(numberMove, computerSelection);
-    let computerTextCapitalized = computerText.charAt(0).toUpperCase() + computerText.slice(1);
-
-    if(computerSelection == playerSelection){
-        alert(`Tie, Computer chose ${computerText} and you chose ${playerText}`);
-        animateComputer(`${computerTextCapitalized}`);
-        return 0;
-    }
-    else if(losingMove[playerSelection] == computerSelection){
-        alert(`You Lose, Computer chose ${computerText} and you chose ${playerText}`);
-        animateComputer(`${computerTextCapitalized}`);
-        return -1;
-    }
-    else if(losingMove[playerSelection] !== computerSelection){
-        alert(`You Win, Computer chose ${computerText} and you chose ${playerText}`);
-        animateComputer(`${computerTextCapitalized}`);
-        return 1;
-    }
-    else{
-        alert("Error");
-    }
 }
-
-function playGame(){
-    for (let i = 0; i < 5; i++){
-        playRound();
-    }
-}
-

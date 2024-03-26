@@ -56,6 +56,13 @@ a:hover{
     color: rgb(155, 32, 32);
 }
 
+#reset:hover{
+    background-color: rgb(219, 108, 108);
+}
+
+#reset:active{
+    transform: translateY(2px);
+}
 #directions{
     display: block;
     text-align: center;
@@ -177,12 +184,14 @@ a:hover{
 }
 
 .scoreboard > h1{
+    color: rgb(112, 26, 26);
     text-align: center;
     width: 100%;
     margin: 1%;
 }
 
 .scoreboard button{
+    color: rgb(131, 29, 29);
     padding: 1% 2% 1% 2%;
     background-color: rgb(221, 157, 157);
     border-radius: 15px;
@@ -190,14 +199,17 @@ a:hover{
     margin: 1%;
 }
 
+
 .scores{
     width: 100%;
+    background-color: rgb(207, 147, 147);
     display: flex;
     border-top: 2px solid rgb(109, 23, 23);
     border-bottom: 2px solid rgb(109, 23, 23);
 }
 
 .playerScore{
+    color: rgb(131, 29, 29);
     padding: 1% 0.5% 1% 1%;
     background-color: rgb(221, 157, 157);
     width: 50%;
@@ -208,6 +220,7 @@ a:hover{
 }
 
 .computerScore{
+    color: rgb(131, 29, 29);
     padding: 1% 0.5% 1% 0.5%;
     background-color: rgb(221, 157, 157);
     width: 50%;
@@ -220,7 +233,12 @@ a:hover{
     margin-bottom: 1%;
 }
 
-
+.gameResult{
+    padding: 2%;
+    color: rgb(109, 23, 23);
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
 
 .footer{
     padding: 1%;
