@@ -1,5 +1,10 @@
 @font-face { font-family: bubble; src: url('bubble.ttf'); } 
 
+
+html {
+    overflow-y: scroll;
+  }
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -59,7 +64,7 @@ a:hover{
 }  
 
 .rps{
-    background-color: rgb(221, 157, 157);
+    background-color: #bc7e7f;
     display: flex;
     height: 60%;
     border-bottom: 2px solid rgb(109, 23, 23);
@@ -82,9 +87,10 @@ a:hover{
     justify-content: center;
     gap: 2%;
     padding: 2%;
+    background-color: rgb(221, 157, 157);
 }
 
-.rock, .paper, .scissors {
+.rock, .paper, .scissors{
     width: 30%;
 }
 
@@ -92,6 +98,11 @@ a:hover{
     width: 100%;
     height: auto;
     border: 2px solid rgb(109, 23, 23);
+}
+
+.playerChoice p{
+    text-align: center;
+    width: 100%;
 }
 
 .player h1, .computer h1{
@@ -121,51 +132,92 @@ a:hover{
     height: 100%;
     width: 100%;
     padding: 2%;
-
+    background-color: rgb(221, 157, 157);
 }
 
 .computerChoice img{
     height: auto;
     box-sizing: border-box;
-    width: 52.5%;
+    width: 50%;
     border: 2px solid rgb(109, 23, 23);
 }
 
-.scoreboard{
-    margin: 1% 0;
+.computerFigure{
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+#placeholder{
+    box-sizing: border-box;
+    width: 50%;
+    aspect-ratio: 1/1;
+    border: 2px solid rgb(109, 23, 23);
+    background-color: rgb(221, 157, 157);
+}
+
+#computerCaption{
+    margin-top: 1%;
+    height: 5%;
+}
+
+
+.scoreboard{
+    margin: 1% auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    border: 2px solid rgb(109, 23, 23);
+    border-radius: 15px;
+}
+
 .scoreboard > h1{
     text-align: center;
-    width: 50%;
-    background-color: white;
+    width: 100%;
+    margin: 1%;
 }
 
 .scoreboard button{
-    width: 50%;
+    padding: 1% 2% 1% 2%;
+    background-color: rgb(221, 157, 157);
+    border-radius: 15px;
+    border: 2px solid rgb(109, 23, 23);
+    margin: 1%;
 }
 
 .scores{
-    width: 50%;
+    width: 100%;
     display: flex;
+    border-top: 2px solid rgb(109, 23, 23);
+    border-bottom: 2px solid rgb(109, 23, 23);
 }
 
 .playerScore{
+    padding: 1% 0.5% 1% 1%;
+    background-color: rgb(221, 157, 157);
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid rgb(109, 23, 23);
+}
+
+.computerScore{
+    padding: 1% 0.5% 1% 0.5%;
+    background-color: rgb(221, 157, 157);
     width: 50%;
     text-align: center;
     display: flex;
     flex-direction: column;
 }
 
-.computerScore{
-    width: 50%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+.playerScore h1 , .computerScore h1{
+    margin-bottom: 1%;
 }
 
 

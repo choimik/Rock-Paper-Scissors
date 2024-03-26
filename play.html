@@ -16,35 +16,40 @@
         </ul>
     </nav>
 
-    <h1 id="directions">Rock Paper Scissors</h1>
+    <!-- <h1 id="directions">Rock Paper Scissors</h1> -->
 
     <div class="rps">
         <div class="player">
             <h1>Player Choice</h1>
             <div class="playerChoice">
+                <div class="rock">
+                    <img class="rock" src="pictures/rock.svg" width="10%" height="10%">
+                    <p class="rock">Rock</p>
+                </div>
                 <div class="scissors">
-                    <img src="pictures/scissors.svg" width="10%" height="10%">
-                    <p>Scissors</p>
+                    <img class="scissors" src="pictures/scissors.svg" width="10%" height="10%">
+                    <p class="scissors">Scissors</p>
                 </div>
                 <div class="paper">
-                    <img src="pictures/paper.svg" width="10%" height="10%">
-                    <p>Paper</p>
-                </div>
-                <div class="rock">
-                    <img src="pictures/rock.svg" width="10%" height="10%">
-                    <p>Rock</p>
+                    <img class="paper" src="pictures/paper.svg" width="10%" height="10%">
+                    <p class="paper">Paper</p>
                 </div>
             </div>
         </div>
         <div class="computer">
             <h1>Computer Choice</h1>
             <div class="computerChoice">
-                <div>
-                    <img src="pictures/rock.svg" width="10%" height="10%">
-                    <p>Unknown Move</p>
+                <div class="computerFigure">
+                    <img src="pictures/unknown.svg" width="10%" height="10%" id="computerImg">
+                    <p id="computerCaption">Unknown Move</p>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="gameResult">
+        <h1>Who Will Win?</h1>
+        <p></p>
     </div>
 
     <div class="scoreboard">
@@ -53,16 +58,17 @@
         <div class="scores">
             <div class="playerScore">
                 <h1>Player</h1>
-                <h1>0</h1>
+                <h2>0</h>
             </div>
 
-            <div class="playerScore">
+            <div class="computerScore">
                 <h1>Computer</h1>
-                <h1>0</h1>
+                <h2>0</h2>
             </div>
         </div>
 
         <button id="reset">Reset</button>
+
     </div>
 
     <div class="pastGames">
